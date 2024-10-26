@@ -1,80 +1,77 @@
-**DATOS ESTRUCTURADOS:**
+# Información de Datos
 
-Tabla de vueltas:
+## Datos Estructurados
 
-• Fuente de los Datos: [Ergast](https://ergast.com/mrd/).
+### Tabla de Vueltas
 
-• Fecha de Recogida: 20 octubre 2024.
+- **Fuente de los Datos**: [Ergast](https://ergast.com/mrd/)
+- **Fecha de Recogida**: 20 octubre 2024
+- **Formato de los Datos**: CSV
+- **Licencia de Uso**: Apache License Version 2.0
+- **Descripción de las Variables**:
 
-• Formato de los Datos: CSV.
+| Variable      | Tipo       | Descripción                                                                                                      |
+|---------------|------------|------------------------------------------------------------------------------------------------------------------|
+| `raceId`      | INTEGER    | Identificador único para cada carrera, usado para asociar vueltas y pilotos con su carrera correspondiente.     |
+| `driverId`    | INTEGER    | Identificador único para cada piloto, utilizado para vincular vueltas y posiciones a un piloto específico.      |
+| `lap`         | INTEGER    | Número de la vuelta, comenzando desde `1` y aumentando hasta el total de vueltas de la carrera.                |
+| `position`    | INTEGER    | Posición del piloto al final de la vuelta, donde `1` representa el primer lugar.                               |
+| `time`        | TEXT       | Tiempo que le tomó al piloto completar la vuelta.                                                               |
+| `milliseconds`| INTEGER    | Tiempo de la vuelta en milisegundos.                                                                            |
 
-• Licencia de Uso:    Apache License Version 2.0.
+### Tabla de Conductores
 
-• Descripción de las Variables o Atributos: 
+- **Fuente de los Datos**: [Ergast](https://ergast.com/mrd/)
+- **Fecha de Recogida**: 26 octubre 2024
+- **Formato de los Datos**: CSV
+- **Licencia de Uso**: Apache License Version 2.0
+- **Descripción de las Variables**:
 
-- **raceId**: Identificador único de tipo `INTEGER` para cada carrera, utilizado para relacionar las vueltas y los pilotos con la carrera correspondiente.
-- **driverId**: Identificador único de tipo `INTEGER`, que representa de manera única a cada piloto y se usa para asociar las vueltas y posiciones a un piloto específico.
-- **lap**: Número entero que indica el número de la vuelta que se está registrando, comenzando desde `1` y aumentando hasta el total de vueltas de la carrera.
-- **position**: Número entero que indica la posición del piloto al final de la vuelta, donde `1` representa el primer lugar.
-- **time**: Campo de tipo `TEXT` que registra el tiempo que le tomó al piloto completar la vuelta.
-- **milliseconds**: Número entero que representa el tiempo de la vuelta en milisegundos.
+| Variable     | Tipo       | Descripción                                                                                     |
+|--------------|------------|-------------------------------------------------------------------------------------------------|
+| `driverId`   | INTEGER    | Identificador único del conductor.                                                              |
+| `driverRef`  | TEXT       | Referencia al nombre del piloto, generalmente es su apellido.                                   |
+| `number`     | INTEGER    | Número del piloto.                                                                              |
+| `code`       | TEXT       | Código específico relacionado con el conductor.                                                 |
+| `forename`   | TEXT       | Nombre del conductor.                                                                           |
+| `surname`    | TEXT       | Apellido del conductor.                                                                         |
+| `dob`        | DATE       | Fecha de nacimiento del conductor en formato `AAAA-MM-DD`.                                      |
+| `nationality`| TEXT       | Nacionalidad del conductor.                                                                     |
+| `url`        | TEXT       | Enlace a la página de Wikipedia del conductor.                                                  |
 
-Tabla de conductores:
+### Tabla de Carreras
 
-• Fuente de los Datos: [Ergast](https://ergast.com/mrd/).
+- **Fuente de los Datos**: [Ergast](https://ergast.com/mrd/)
+- **Fecha de Recogida**: 20 octubre 2024
+- **Formato de los Datos**: CSV
+- **Licencia de Uso**: Apache License Version 2.0
+- **Descripción de las Variables**:
 
-• Fecha de Recogida: 26 octubre 2024.
+| Variable       | Tipo       | Descripción                                                                                                          |
+|----------------|------------|----------------------------------------------------------------------------------------------------------------------|
+| `raceId`       | INTEGER    | Identificador único de cada carrera, usado para asociar vueltas y pilotos con su carrera correspondiente.           |
+| `year`         | INTEGER    | Año en que se lleva a cabo la carrera.                                                                               |
+| `round`        | INTEGER    | Orden de la carrera dentro de la temporada.                                                                          |
+| `circuitId`    | INTEGER    | Identificador del circuito donde se celebra la carrera.                                                              |
+| `name`         | TEXT       | Nombre de la carrera.                                                                                                |
+| `date`         | DATE       | Fecha de la carrera.                                                                                                 |
+| `time`         | TIME       | Hora de inicio de la carrera.                                                                                        |
+| `url`          | TEXT       | Enlace a la página de Wikipedia de la carrera.                                                                       |
+| `fp1_date`     | DATE       | Fecha de la primera sesión de práctica (FP1), puede ser nula (`\N`).                                                 |
+| `fp1_time`     | TIME       | Hora de la primera sesión de práctica (FP1), puede ser nula (`\N`).                                                  |
+| `fp2_date`     | DATE       | Fecha de la segunda sesión de práctica (FP2), puede ser nula (`\N`).                                                 |
+| `fp2_time`     | TIME       | Hora de la segunda sesión de práctica (FP2), puede ser nula (`\N`).                                                  |
+| `fp3_date`     | DATE       | Fecha de la tercera sesión de práctica (FP3), puede ser nula (`\N`).                                                 |
+| `fp3_time`     | TIME       | Hora de la tercera sesión de práctica (FP3), puede ser nula (`\N`).                                                  |
+| `quali_date`   | DATE       | Fecha de la sesión de clasificación, puede ser nula (`\N`).                                                          |
+| `quali_time`   | TIME       | Hora de la sesión de clasificación, puede ser nula (`\N`).                                                           |
+| `sprint_date`  | DATE       | Fecha de la sesión de sprint, puede ser nula (`\N`).                                                                 |
+| `sprint_time`  | TIME       | Hora de la sesión de sprint, puede ser nula (`\N`).                                                                  |
 
-• Formato de los Datos: CSV.
+## Datos No Estructurados
 
-• Licencia de Uso:    Apache License Version 2.0.
-
-• Descripción de las Variables o Atributos: 
-
-- **driverId**: Es una clave única que identifica a cada conductor. Es un número entero.
-- **driverRef**: Es una referencia al nombre del piloto. generalmente es su apellido.
-- **number**: Número del piloto.
-- **code**: Es un código específico relacionado con los conductores.
-- **forename**: Es el nombre del conductor.
-- **surname**: Es el apellido del conductor.
-- **dob**: Indica la fecha de nacimiento de cada conductor en el formato "AAAA-MM-DD"
-- **nationality**: Contiene la nacionalidad del conductor. 
-- **url**: Proporciona un enlace a la página de Wikipedia del conductor. Este enlace contiene más información sobre el historial y carrera del conductor.
-
-Tabla de carreras:
-
-• Fuente de los Datos: [Ergast](https://ergast.com/mrd/).
-
-• Fecha de Recogida: 20 octubre 2024.
-
-• Formato de los Datos: CSV.
-
-• Licencia de Uso:    Apache License Version 2.0.
-
-• Descripción de las Variables o Atributos: 
-
-- **raceId**: Identificador único de tipo `INTEGER` para cada carrera, utilizado para relacionar las vueltas y los pilotos con la carrera correspondiente.
-- **year**: Año en que se lleva a cabo la carrera, representado como un número entero.
-- **round**: Número entero que indica el orden de la carrera dentro de la temporada.
-- **circuitId**: Identificador del circuito donde se celebra la carrera, generalmente representado como un número entero.
-- **name**: Nombre de la carrera, presentado como un texto.
-- **date**: Fecha en que se celebra la carrera, en formato `DATE`.
-- **time**: Hora de inicio de la carrera, en formato `TIME`.
-- **url**: Enlace a la página de Wikipedia de la carrera, presentado como un texto.
-- **fp1_date, fp1_time, fp2_date, fp2_time, fp3_date, fp3_time**: Fechas y horas de las sesiones de práctica (FP1, FP2, FP3) que pueden ser nulas (representadas como `\N`).
-- **quali_date, quali_time**: Fecha y hora de la sesión de clasificación que pueden ser nulas (representadas como `\N`).
-- **sprint_date, sprint_time**: Fecha y hora de la sesión de sprint que pueden ser nulas (representadas como `\N`).
-
-
-**DATOS NO ESTRUCTURADOS:**
-
-• Fuente de los datos: Wikipedia de cada uno de los pilotos.
-
-• Fecha de recogida: 26 de Octubre a las 17:37
-
-• Formato de los datos: JSONL
-
-• Licencia de Uso: Licencia Creative Commons Atribución-CompartirIgual 4.0
-
-• Descripción de los datos: Es un JSON para cada uno de los pilotos, el cual contiene driverID y el contenido de la primera sección de su entrada de la Wikipedia. El objetivo es poder hacer consultas sobre la descripción de cada uno de los pilotos.
-
+- **Fuente de los datos**: Wikipedia de cada uno de los pilotos.
+- **Fecha de Recogida**: 26 de octubre 2024 a las 17:37
+- **Formato de los Datos**: JSONL
+- **Licencia de Uso**: Licencia Creative Commons Atribución-CompartirIgual 4.0
+- **Descripción de los Datos**: JSON por piloto que contiene `driverID` y el contenido de la primera sección de la entrada de Wikipedia del piloto. Permite realizar consultas sobre la descripción de cada piloto.
