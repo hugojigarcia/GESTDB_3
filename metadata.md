@@ -1,3 +1,5 @@
+**DATOS ESTRUCTURADOS:**
+
 Tabla de vueltas:
 
 • Fuente de los Datos: [Ergast](https://ergast.com/mrd/).
@@ -19,21 +21,25 @@ Tabla de vueltas:
 
 Tabla de conductores:
 
-• Fuente de los Datos: API de https://github.com/jolpica/jolpica-f1/tree/main.
+• Fuente de los Datos: [Ergast](https://ergast.com/mrd/).
 
-• Fecha de Recogida: 20 octubre 2024.• Formato de los Datos:  JSON.
+• Fecha de Recogida: 26 octubre 2024.
+
+• Formato de los Datos: CSV.
 
 • Licencia de Uso:    Apache License Version 2.0.
 
 • Descripción de las Variables o Atributos: 
 
-- **driverId**: Es una clave única que identifica a cada conductor. Cada valor en esta columna representa un identificador corto y exclusivo.
-- **url**: Proporciona un enlace a la página de Wikipedia del conductor. Este enlace contiene más información sobre el historial y carrera del conductor.
-- **familyName**: Es el apellido o el nombre de familia del conductor.
-- **dateOfBirth**: Indica la fecha de nacimiento de cada conductor en el formato "AAAA-MM-DD"
+- **driverId**: Es una clave única que identifica a cada conductor. Es un número entero.
+- **driverRef**: Es una referencia al nombre del piloto. generalmente es su apellido.
+- **number**: Número del piloto.
+- **code**: Es un código específico relacionado con los conductores.
+- **forename**: Es el nombre del conductor.
+- **surname**: Es el apellido del conductor.
+- **dob**: Indica la fecha de nacimiento de cada conductor en el formato "AAAA-MM-DD"
 - **nationality**: Contiene la nacionalidad del conductor. 
-- **permanentNumber**: Este campo parece estar relacionado con un número de identificación permanente para los conductores.
-- **code**: Es un código específico relacionado con los conductores,
+- **url**: Proporciona un enlace a la página de Wikipedia del conductor. Este enlace contiene más información sobre el historial y carrera del conductor.
 
 Tabla de carreras:
 
@@ -41,7 +47,7 @@ Tabla de carreras:
 
 • Fecha de Recogida: 20 octubre 2024.
 
-• Formato de los Datos:CSV.
+• Formato de los Datos: CSV.
 
 • Licencia de Uso:    Apache License Version 2.0.
 
@@ -58,3 +64,17 @@ Tabla de carreras:
 - **fp1_date, fp1_time, fp2_date, fp2_time, fp3_date, fp3_time**: Fechas y horas de las sesiones de práctica (FP1, FP2, FP3) que pueden ser nulas (representadas como `\N`).
 - **quali_date, quali_time**: Fecha y hora de la sesión de clasificación que pueden ser nulas (representadas como `\N`).
 - **sprint_date, sprint_time**: Fecha y hora de la sesión de sprint que pueden ser nulas (representadas como `\N`).
+
+
+**DATOS NO ESTRUCTURADOS:**
+
+• Fuente de los datos: Wikipedia de cada uno de los pilotos.
+
+• Fecha de recogida: 26 de Octubre a las 17:37
+
+• Formato de los datos: JSONL
+
+• Licencia de Uso: Licencia Creative Commons Atribución-CompartirIgual 4.0
+
+• Descripción de los datos: Es un JSON para cada uno de los pilotos, el cual contiene driverID y el contenido de la primera sección de su entrada de la Wikipedia. El objetivo es poder hacer consultas sobre la descripción de cada uno de los pilotos.
+
