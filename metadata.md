@@ -68,6 +68,10 @@
 | `sprint_date`  | DATE       | Fecha de la sesión de sprint, puede ser nula (`\N`).                                                                 |
 | `sprint_time`  | TIME       | Hora de la sesión de sprint, puede ser nula (`\N`).                                                                  |
 
+
+
+
+
 ## Datos No Estructurados
 
 - **Fuente de los datos**: Wikipedia de cada uno de los pilotos.
@@ -75,3 +79,39 @@
 - **Formato de los Datos**: JSONL
 - **Licencia de Uso**: Licencia Creative Commons Atribución-CompartirIgual 4.0
 - **Descripción de los Datos**: JSON por piloto que contiene `driverID` y el contenido de la primera sección de la entrada de Wikipedia del piloto. Permite realizar consultas sobre la descripción de cada piloto.
+
+
+
+
+## Datos Enlazados
+
+### Ontología de Carreras
+
+Los datos estructurados y no estructurados están enlazados mediante una ontología RDF, diseñada para representar relaciones clave entre carreras, vueltas, y conductores, proporcionando una estructura formal para su uso en consultas y análisis semánticos.
+
+#### Clases y Propiedades
+
+- **Clases Principales**:
+  - `ont:Driver`: Representa un dataset de pilotos.
+  - `ont:Race`: Representa un dataset de carreras.
+  - `ont:Lap`: Representa un dataset de vueltas.
+  - `ont:Dataset`: Representa un conjunto de datos dentro del catálogo de datos.
+  - `ont:DataCatalog`: Representa un catálogo que agrupa varios conjuntos de datos.
+
+- **Propiedades de los Datos**:
+  - Se ha descrito una data property para cada uno de los datos de los diferentes datasets.
+
+- **Propiedades de los Objetos**:
+  - `ont:hasDriver`: Relaciona una vuelta con el piloto correspondiente.
+  - `ont:hasRace`: Asocia una vuelta con una carrera.
+  - `ont:isPartOf`: Relaciona un conjunto de datos con su catálogo de datos correspondiente.
+
+#### Catálogo de Datos y Conjuntos de Datos
+
+- **ont:RacingDataCatalog**: Catálogo principal que agrupa conjuntos de datos sobre carreras, pilotos, y vueltas.
+- **Conjuntos de datos individuales**:
+  - `ont:LapData`: Contiene tiempos de vuelta y posiciones de pilotos.
+  - `ont:RaceData`: Información de eventos de carrera.
+  - `ont:DriverData`: Información sobre los pilotos, incluyendo datos personales y de carrera.
+  - `ont:DriversDescriptions`: Descripciones textuales de los pilotos.
+
