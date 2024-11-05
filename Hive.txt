@@ -1,0 +1,18 @@
+CREATE EXTERNAL TABLE laps (
+  raceid INT,
+  driverid STRING,
+  lap INT,
+  position INT,
+  ⁠ time ⁠ STRING,
+  milliseconds INT
+ 
+)
+STORED BY 'org.apache.hive.storage.jdbc.JdbcStorageHandler'
+TBLPROPERTIES (
+  "hive.sql.database.type" = "POSTGRES",
+  "hive.sql.jdbc.driver" = "org.postgresql.Driver",
+  "hive.sql.jdbc.url" = "jdbc:postgresql://hive4-postgres:5432/metastore_db",
+  "hive.sql.dbcp.username" = "hive",
+  "hive.sql.dbcp.password" = "password",
+  "hive.sql.table" = "formula1_laps"
+);
