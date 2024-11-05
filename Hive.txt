@@ -15,3 +15,35 @@ TBLPROPERTIES (
   "hive.sql.dbcp.password" = "password",
   "hive.sql.table" = "formula1_laps"
 );
+
+
+CREATE EXTERNAL TABLE races (
+  raceid INT,
+  year INT,
+  round INT,
+  circuitid STRING,
+  name STRING,
+  date DATE,
+  time STRING,
+  url STRING,
+  fp1_date DATE,
+  fp1_time STRING,
+  fp2_date DATE,
+  fp2_time STRING,
+  fp3_date DATE,
+  fp3_time STRING,
+  quali_date DATE,
+  quali_time STRING,
+  sprint_date DATE,
+  sprint_time STRING
+ 
+)
+STORED BY 'org.apache.hive.storage.jdbc.JdbcStorageHandler'
+TBLPROPERTIES (
+  "hive.sql.database.type" = "POSTGRES",
+  "hive.sql.jdbc.driver" = "org.postgresql.Driver",
+  "hive.sql.jdbc.url" = "jdbc:postgresql://hive4-postgres:5432/metastore_db",
+  "hive.sql.dbcp.username" = "hive",
+  "hive.sql.dbcp.password" = "password",
+  "hive.sql.table" = "formula1_races"
+);
