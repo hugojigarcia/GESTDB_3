@@ -3,9 +3,8 @@ CREATE EXTERNAL TABLE laps (
   driverid STRING,
   lap INT,
   position INT,
-  ⁠ time ⁠ STRING,
+  ⁠`time` STRING,
   milliseconds INT
- 
 )
 STORED BY 'org.apache.hive.storage.jdbc.JdbcStorageHandler'
 TBLPROPERTIES (
