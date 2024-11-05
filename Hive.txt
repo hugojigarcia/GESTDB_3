@@ -17,6 +17,7 @@ TBLPROPERTIES (
 );
 
 
+
 CREATE EXTERNAL TABLE races (
   raceid INT,
   year INT,
@@ -46,4 +47,28 @@ TBLPROPERTIES (
   "hive.sql.dbcp.username" = "hive",
   "hive.sql.dbcp.password" = "password",
   "hive.sql.table" = "formula1_races"
+);
+
+
+
+CREATE EXTERNAL TABLE drivers (
+  driverId INT,
+  driverRef STRING,
+  number INT,
+  code STRING,
+  forename STRING,
+  surname STRING,
+  dob DATE,
+  nationality STRING,
+  url STRING
+)
+STORED BY 'org.apache.hive.storage.jdbc.JdbcStorageHandler'
+TBLPROPERTIES (
+  "hive.sql.database.type" = "MYSQL",
+  "hive.sql.jdbc.url" = "jdbc:mariadb://hive4-mariadb:3306/my_mariadb_db",
+  "hive.sql.dbcp.username" = "root",
+  "hive.sql.dbcp.password" = "my_password",
+  "hive.sql.jdbc.driver" = "org.mariadb.jdbc.Driver",
+  "hive.sql.dbcp.driver.class" = "org.mariadb.jdbc.Driver",
+  "hive.sql.table" = "Formula1_Drivers"
 );
