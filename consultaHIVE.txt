@@ -26,7 +26,7 @@ sql
 Copiar código
 SELECT 
   r.name AS race_name,
-  r.date AS race_date,
+  r.`date` AS race_date,
   d.forename,
   d.surname,
   MIN(l.milliseconds) AS fastest_lap_time_ms
@@ -37,9 +37,9 @@ JOIN
 JOIN 
   drivers d ON l.driverid = d.driverId
 GROUP BY 
-  r.name, r.date, d.forename, d.surname
+  r.name, r.`date`, d.forename, d.surname
 ORDER BY 
-  r.date, fastest_lap_time_ms;
+  r.`date`, fastest_lap_time_ms;
 3. ¿Cuántas posiciones ganó o perdió cada piloto en cada carrera?
 Explicación: Esta consulta mide el cambio de posición de cada piloto durante una carrera, lo cual es importante para entender la estrategia y las habilidades de manejo de cada piloto.
 
@@ -71,7 +71,7 @@ JOIN
 JOIN 
   drivers d ON p.driverid = d.driverId
 ORDER BY 
-  r.date, position_change DESC;
+  r.`date`, position_change DESC;
 4. ¿Cuántas vueltas completó cada piloto en cada carrera y cuál fue su posición promedio?
 Explicación: Esta consulta cuenta el número de vueltas completadas por cada piloto y calcula la posición promedio de cada uno. Esto permite ver la consistencia y la posición media de los pilotos durante toda la carrera.
 
@@ -92,7 +92,7 @@ JOIN
 GROUP BY 
   r.name, d.forename, d.surname
 ORDER BY 
-  r.date, avg_position;
+  r.`date`, avg_position;
 5. ¿Cuál fue el tiempo total de carrera de cada piloto en cada carrera?
 Explicación: Esta consulta calcula el tiempo total de carrera (sumando los tiempos de todas las vueltas) para cada piloto en cada carrera. Esto permite ver quién tuvo el tiempo acumulado más rápido, lo que es fundamental para entender el rendimiento general en cada carrera.
 
@@ -100,7 +100,7 @@ sql
 Copiar código
 SELECT 
   r.name AS race_name,
-  r.date AS race_date,
+  r.`date` AS race_date,
   d.forename,
   d.surname,
   SUM(l.milliseconds) AS total_race_time_ms
@@ -111,9 +111,9 @@ JOIN
 JOIN 
   drivers d ON l.driverid = d.driverId
 GROUP BY 
-  r.name, r.date, d.forename, d.surname
+  r.name, r.`date`, d.forename, d.surname
 ORDER BY 
-  r.date, total_race_time_ms;
+  r.`date`, total_race_time_ms;
 6. ¿Cuántas carreras ganó cada piloto en una temporada específica?
 Explicación: Esta consulta determina cuántas carreras ganó cada piloto en una temporada específica. Esta métrica es importante para ver el rendimiento de los pilotos durante toda la temporada.
 
