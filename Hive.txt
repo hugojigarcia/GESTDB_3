@@ -3,7 +3,7 @@ CREATE EXTERNAL TABLE laps (
   driverid STRING,
   lap INT,
   position INT,
-  ⁠`time` STRING,
+  ⁠lap_time STRING,
   milliseconds INT
 )
 STORED BY 'org.apache.hive.storage.jdbc.JdbcStorageHandler'
@@ -25,7 +25,7 @@ CREATE EXTERNAL TABLE races (
   circuitid STRING,
   name STRING,
   date DATE,
-  time STRING,
+  race_time STRING,
   url STRING,
   fp1_date DATE,
   fp1_time STRING,
