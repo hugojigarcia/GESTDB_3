@@ -1,0 +1,179 @@
+Estas tablas (laps, races, y drivers) contienen datos detallados de una temporada de Fórmula 1, como vueltas individuales (laps), detalles de cada carrera (races) y datos de los pilotos (drivers). Con estas tablas, puedes realizar consultas complejas e interesantes para responder preguntas analíticas y extraer información valiosa. Aquí hay algunos ejemplos de consultas complejas que podrías realizar, junto con su explicación y las consultas SQL en Hive correspondientes.
+
+1. ¿Cuál fue el tiempo promedio de vuelta por piloto en cada carrera?
+Explicación: Esta consulta calcula el tiempo promedio de vuelta de cada piloto en cada carrera. Esto es útil para comparar el rendimiento de los pilotos en distintas carreras y analizar su consistencia y velocidad promedio.
+
+sql
+Copiar código
+SELECT 
+  l.raceid,
+  d.driverId,
+  d.forename,
+  d.surname,
+  AVG(l.milliseconds) AS avg_lap_time_ms
+FROM 
+  laps l
+JOIN 
+  drivers d ON l.driverid = d.driverId
+GROUP BY 
+  l.raceid, d.driverId, d.forename, d.surname
+ORDER BY 
+  l.raceid, avg_lap_time_ms;
+2. ¿Qué piloto logró la vuelta más rápida en cada carrera?
+Explicación: Esta consulta identifica al piloto con la vuelta más rápida en cada carrera. Permite ver quién fue el más rápido en un solo lapso y es útil para comparar el desempeño en condiciones específicas de la pista.
+
+sql
+Copiar código
+SELECT 
+  r.name AS race_name,
+  r.`date` AS race_date,
+  d.forename,
+  d.surname,
+  MIN(l.milliseconds) AS fastest_lap_time_ms
+FROM 
+  laps l
+JOIN 
+  races r ON l.raceid = r.raceid
+JOIN 
+  drivers d ON l.driverid = d.driverId
+GROUP BY 
+  r.name, r.`date`, d.forename, d.surname
+ORDER BY 
+  r.`date`, fastest_lap_time_ms;
+3. ¿Cuántas posiciones ganó o perdió cada piloto en cada carrera?
+Explicación: Esta consulta mide el cambio de posición de cada piloto durante una carrera, lo cual es importante para entender la estrategia y las habilidades de manejo de cada piloto.
+
+sql
+Copiar código
+WITH lap_positions AS (
+  SELECT
+    l.raceid,
+    l.driverid,
+    MIN(l.position) AS start_position,
+    MAX(l.position) AS end_position
+  FROM 
+    laps l
+  GROUP BY 
+    l.raceid, l.driverid
+)
+
+SELECT 
+  r.name AS race_name,
+  d.forename,
+  d.surname,
+  p.start_position,
+  p.end_position,
+  (p.start_position - p.end_position) AS position_change
+FROM 
+  lap_positions p
+JOIN 
+  races r ON p.raceid = r.raceid
+JOIN 
+  drivers d ON p.driverid = d.driverId
+ORDER BY 
+  r.`date`, position_change DESC;
+4. ¿Cuántas vueltas completó cada piloto en cada carrera y cuál fue su posición promedio?
+Explicación: Esta consulta cuenta el número de vueltas completadas por cada piloto y calcula la posición promedio de cada uno. Esto permite ver la consistencia y la posición media de los pilotos durante toda la carrera.
+
+sql
+Copiar código
+SELECT 
+  r.name AS race_name,
+  d.forename,
+  d.surname,
+  COUNT(l.lap) AS laps_completed,
+  AVG(l.position) AS avg_position
+FROM 
+  laps l
+JOIN 
+  races r ON l.raceid = r.raceid
+JOIN 
+  drivers d ON l.driverid = d.driverId
+GROUP BY 
+  r.name, d.forename, d.surname
+ORDER BY 
+  r.`date`, avg_position;
+5. ¿Cuál fue el tiempo total de carrera de cada piloto en cada carrera?
+Explicación: Esta consulta calcula el tiempo total de carrera (sumando los tiempos de todas las vueltas) para cada piloto en cada carrera. Esto permite ver quién tuvo el tiempo acumulado más rápido, lo que es fundamental para entender el rendimiento general en cada carrera.
+
+sql
+Copiar código
+SELECT 
+  r.name AS race_name,
+  r.`date` AS race_date,
+  d.forename,
+  d.surname,
+  SUM(l.milliseconds) AS total_race_time_ms
+FROM 
+  laps l
+JOIN 
+  races r ON l.raceid = r.raceid
+JOIN 
+  drivers d ON l.driverid = d.driverId
+GROUP BY 
+  r.name, r.`date`, d.forename, d.surname
+ORDER BY 
+  r.`date`, total_race_time_ms;
+6. ¿Cuántas carreras ganó cada piloto en una temporada específica?
+Explicación: Esta consulta determina cuántas carreras ganó cada piloto en una temporada específica. Esta métrica es importante para ver el rendimiento de los pilotos durante toda la temporada.
+
+sql
+Copiar código
+WITH race_results AS (
+  SELECT
+    l.raceid,
+    l.driverid,
+    MIN(l.position) AS best_position
+  FROM 
+    laps l
+  GROUP BY 
+    l.raceid, l.driverid
+)
+
+SELECT 
+  r.year,
+  d.forename,
+  d.surname,
+  COUNT(rr.raceid) AS races_won
+FROM 
+  race_results rr
+JOIN 
+  races r ON rr.raceid = r.raceid
+JOIN 
+  drivers d ON rr.driverid = d.driverId
+WHERE 
+  rr.best_position = 1  -- Solo los que terminaron en la primera posición
+GROUP BY 
+  r.year, d.forename, d.surname
+ORDER BY 
+  r.year, races_won DESC;
+7. ¿Qué nacionalidad de pilotos ha obtenido más victorias?
+Explicación: Esta consulta proporciona un resumen de las victorias de carrera por nacionalidad de los pilotos, útil para ver la influencia de distintos países en la competición.
+
+sql
+Copiar código
+WITH race_winners AS (
+  SELECT
+    l.raceid,
+    d.nationality,
+    MIN(l.position) AS best_position
+  FROM 
+    laps l
+  JOIN 
+    drivers d ON l.driverid = d.driverId
+  GROUP BY 
+    l.raceid, d.nationality
+)
+
+SELECT 
+  rw.nationality,
+  COUNT(rw.raceid) AS wins
+FROM 
+  race_winners rw
+WHERE 
+  rw.best_position = 1
+GROUP BY 
+  rw.nationality
+ORDER BY 
+  wins DESC;
+Estas consultas aprovechan las relaciones entre las tablas y son útiles para obtener información detallada sobre el rendimiento, la consistencia y las tendencias en las carreras y los pilotos de la Fórmula 1.
