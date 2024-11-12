@@ -1,4 +1,4 @@
-@prefix : <http://upm.es/ontology#> .
+@prefix : <urn:webprotege:ontology:ce542be1-363e-48ed-b4d4-586b704bc4db#> .
 @prefix ont: <http://upm.es/ontology#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -8,6 +8,53 @@
 @base <urn:webprotege:ontology:ce542be1-363e-48ed-b4d4-586b704bc4db> .
 
 <urn:webprotege:ontology:ce542be1-363e-48ed-b4d4-586b704bc4db> rdf:type owl:Ontology .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://upm.es/ontology#dbname
+ont:dbname rdf:type owl:AnnotationProperty ;
+           rdfs:label "ont:dbname" .
+
+
+###  http://upm.es/ontology#host
+ont:host rdf:type owl:AnnotationProperty ;
+         rdfs:label "ont:host" .
+
+
+###  http://upm.es/ontology#name
+ont:name rdf:type owl:AnnotationProperty .
+
+
+###  http://upm.es/ontology#password
+ont:password rdf:type owl:AnnotationProperty ;
+             rdfs:label "ont:password" .
+
+
+###  http://upm.es/ontology#port
+ont:port rdf:type owl:AnnotationProperty ;
+         rdfs:label "ont:port" .
+
+
+###  http://upm.es/ontology#topic
+ont:topic rdf:type owl:AnnotationProperty ;
+          rdfs:label "ont:topic" .
+
+
+###  http://upm.es/ontology#url
+ont:url rdf:type owl:AnnotationProperty .
+
+
+###  http://upm.es/ontology#user
+ont:user rdf:type owl:AnnotationProperty ;
+         rdfs:label "ont:user" .
+
+
+###  http://upm.es/ontology#userm
+ont:userm rdf:type owl:AnnotationProperty ;
+          rdfs:label "ont:userm" .
+
 
 #################################################################
 #    Datatypes
@@ -29,248 +76,40 @@ xsd:time rdf:type rdfs:Datatype .
 #    Object Properties
 #################################################################
 
+###  http://upm.es/ontology#belongsTo
+ont:belongsTo rdf:type owl:ObjectProperty ;
+              rdfs:label "ont:belongsTo" .
+
+
+###  http://upm.es/ontology#has
+ont:has rdf:type owl:ObjectProperty ;
+        rdfs:label "ont:has" .
+
+
 ###  http://upm.es/ontology#hasDriver
 ont:hasDriver rdf:type owl:ObjectProperty ;
-           rdfs:domain ont:Lap ;
-           rdfs:range ont:Driver ;
-           rdfs:comment "Associates a lap with a driver." ;
-           rdfs:label "hasDriver"@en .
+              rdfs:comment "Associates a lap with a driver." ;
+              rdfs:label "hasDriver"@en .
 
 
 ###  http://upm.es/ontology#hasRace
 ont:hasRace rdf:type owl:ObjectProperty ;
-         rdfs:domain ont:Lap ;
-         rdfs:range ont:Race ;
-         rdfs:comment "Associates a lap with a race." ;
-         rdfs:label "hasRace"@en .
+            rdfs:comment "Associates a lap with a race." ;
+            rdfs:label "hasRace"@en .
 
 
 ###  http://upm.es/ontology#isPartOf
 ont:isPartOf rdf:type owl:ObjectProperty ;
-          rdfs:domain ont:Dataset ;
-          rdfs:range ont:DataCatalog ;
-          rdfs:comment "Associates a dataset with a data catalog." ;
-          rdfs:label "isPartOf"@en .
+             rdfs:domain ont:Dataset ;
+             rdfs:range ont:DataCatalog ;
+             rdfs:comment "Associates a dataset with a data catalog." ;
+             rdfs:label "isPartOf"@en .
 
 
-#################################################################
-#    Data properties
-#################################################################
-
-###  http://upm.es/ontology#circuitId
-ont:circuitId rdf:type owl:DatatypeProperty ;
-           rdfs:domain ont:Race ;
-           rdfs:range xsd:string ;
-           rdfs:comment "Unique identifier for the circuit." ;
-           rdfs:label "circuitId"@en .
-
-
-###  http://upm.es/ontology#code
-ont:code rdf:type owl:DatatypeProperty ;
-      rdfs:domain ont:Driver ;
-      rdfs:range xsd:string ;
-      rdfs:comment "A unique code for the driver." ;
-      rdfs:label "code"@en .
-
-
-###  http://upm.es/ontology#datasetDescription
-ont:datasetDescription rdf:type owl:DatatypeProperty ;
-                    rdfs:domain ont:Dataset ;
-                    rdfs:range xsd:string ;
-                    rdfs:comment "Description of the dataset." ;
-                    rdfs:label "datasetDescription"@en .
-
-
-###  http://upm.es/ontology#datasetTitle
-ont:datasetTitle rdf:type owl:DatatypeProperty ;
-              rdfs:domain ont:Dataset ;
-              rdfs:range xsd:string ;
-              rdfs:comment "Title of the dataset." ;
-              rdfs:label "datasetTitle"@en .
-
-
-###  http://upm.es/ontology#date
-ont:date rdf:type owl:DatatypeProperty ;
-      rdfs:domain ont:Race ;
-      rdfs:range xsd:date ;
-      rdfs:comment "Date of the race." ;
-      rdfs:label "date"@en .
-
-
-###  http://upm.es/ontology#dob
-ont:dob rdf:type owl:DatatypeProperty ;
-     rdfs:domain ont:Driver ;
-     rdfs:range xsd:date ;
-     rdfs:comment "Date of birth of the driver in YYYY-MM-DD format." ;
-     rdfs:label "dob"@en .
-
-
-###  http://upm.es/ontology#driverId
-ont:driverId rdf:type owl:DatatypeProperty ;
-          rdfs:domain ont:Driver ;
-          rdfs:range xsd:string ;
-          rdfs:comment "Unique identifier for each driver." ;
-          rdfs:label "driverId"@en .
-
-
-###  http://upm.es/ontology#driverRef
-ont:driverRef rdf:type owl:DatatypeProperty ;
-           rdfs:domain ont:Driver ;
-           rdfs:range xsd:string ;
-           rdfs:comment "Reference to the driver's name, usually their surname." ;
-           rdfs:label "driverRef"@en .
-
-
-###  http://upm.es/ontology#forename
-ont:forename rdf:type owl:DatatypeProperty ;
-          rdfs:domain ont:Driver ;
-          rdfs:range xsd:string ;
-          rdfs:comment "The first name of the driver." ;
-          rdfs:label "forename"@en .
-
-
-###  http://upm.es/ontology#fp1_date
-ont:fp1_date rdf:type owl:DatatypeProperty ;
-          rdfs:domain ont:Race ;
-          rdfs:range xsd:date ;
-          rdfs:comment "Date of the first practice session (FP1), may be null." ;
-          rdfs:label "fp1_date"@en .
-
-
-###  http://upm.es/ontology#fp1_time
-ont:fp1_time rdf:type owl:DatatypeProperty ;
-          rdfs:domain ont:Race ;
-          rdfs:range xsd:time ;
-          rdfs:comment "Time of the first practice session (FP1), may be null." ;
-          rdfs:label "fp1_time"@en .
-
-
-###  http://upm.es/ontology#fp2_date
-ont:fp2_date rdf:type owl:DatatypeProperty ;
-          rdfs:domain ont:Race ;
-          rdfs:range xsd:date ;
-          rdfs:comment "Date of the second practice session (FP2), may be null." ;
-          rdfs:label "fp2_date"@en .
-
-
-###  http://upm.es/ontology#fp2_time
-ont:fp2_time rdf:type owl:DatatypeProperty ;
-          rdfs:domain ont:Race ;
-          rdfs:range xsd:time ;
-          rdfs:comment "Time of the second practice session (FP2), may be null." ;
-          rdfs:label "fp2_time"@en .
-
-
-###  http://upm.es/ontology#issueDate
-ont:issueDate rdf:type owl:DatatypeProperty ;
-           rdfs:domain ont:Dataset ;
-           rdfs:range xsd:date ;
-           rdfs:comment "The date when the dataset was issued." ;
-           rdfs:label "issueDate"@en .
-
-
-###  http://upm.es/ontology#lapNumber
-ont:lapNumber rdf:type owl:DatatypeProperty ;
-           rdfs:domain ont:Lap ;
-           rdfs:range xsd:integer ;
-           rdfs:comment "The number of the lap in a race." ;
-           rdfs:label "lapNumber"@en .
-
-
-###  http://upm.es/ontology#milliseconds
-ont:milliseconds rdf:type owl:DatatypeProperty ;
-              rdfs:domain ont:Lap ;
-              rdfs:range xsd:integer ;
-              rdfs:comment "Time of the lap in milliseconds." ;
-              rdfs:label "milliseconds"@en .
-
-
-###  http://upm.es/ontology#name
-ont:name rdf:type owl:DatatypeProperty ;
-      rdfs:domain ont:Race ;
-      rdfs:range xsd:string ;
-      rdfs:comment "Name of the race." ;
-      rdfs:label "name"@en .
-
-
-###  http://upm.es/ontology#nationality
-ont:nationality rdf:type owl:DatatypeProperty ;
-             rdfs:domain ont:Driver ;
-             rdfs:range xsd:string ;
-             rdfs:comment "Nationality of the driver." ;
-             rdfs:label "nationality"@en .
-
-
-###  http://upm.es/ontology#number
-ont:number rdf:type owl:DatatypeProperty ;
-        rdfs:domain ont:Driver ;
-        rdfs:range xsd:integer ;
-        rdfs:comment "The driver's number." ;
-        rdfs:label "number"@en .
-
-
-###  http://upm.es/ontology#position
-ont:position rdf:type owl:DatatypeProperty ;
-          rdfs:domain ont:Lap ;
-          rdfs:range xsd:integer ;
-          rdfs:comment "The position of the driver at the end of the lap." ;
-          rdfs:label "position"@en .
-
-
-###  http://upm.es/ontology#raceId
-ont:raceId rdf:type owl:DatatypeProperty ;
-        rdfs:domain ont:Lap ;
-        rdfs:range xsd:integer ;
-        rdfs:comment "Unique identifier for each race, used to associate laps with their corresponding race." ;
-        rdfs:label "raceId"@en .
-
-
-###  http://upm.es/ontology#round
-ont:round rdf:type owl:DatatypeProperty ;
-       rdfs:domain ont:Race ;
-       rdfs:range xsd:integer ;
-       rdfs:comment "Order of the race within the season." ;
-       rdfs:label "round"@en .
-
-
-###  http://upm.es/ontology#surname
-ont:surname rdf:type owl:DatatypeProperty ;
-         rdfs:domain ont:Driver ;
-         rdfs:range xsd:string ;
-         rdfs:comment "The surname of the driver." ;
-         rdfs:label "surname"@en .
-
-
-###  http://upm.es/ontology#time
-ont:time rdf:type owl:DatatypeProperty ;
-      rdfs:domain ont:Race ;
-      rdfs:range xsd:time ;
-      rdfs:comment "Time of the race." ;
-      rdfs:label "time"@en .
-
-
-###  http://upm.es/ontology#timeLap
-ont:timeLap rdf:type owl:DatatypeProperty ;
-         rdfs:domain ont:Lap ;
-         rdfs:range xsd:string ;
-         rdfs:comment "Time taken by the driver to complete the lap." ;
-         rdfs:label "timeLap"@en .
-
-
-###  http://upm.es/ontology#url
-ont:url rdf:type owl:DatatypeProperty ;
-     rdfs:domain ont:Race ;
-     rdfs:range xsd:anyURI ;
-     rdfs:comment "URL for more information about the race." ;
-     rdfs:label "url"@en .
-
-
-###  http://upm.es/ontology#year
-ont:year rdf:type owl:DatatypeProperty ;
-      rdfs:domain ont:Race ;
-      rdfs:range xsd:gYear ;
-      rdfs:comment "Year of the race." ;
-      rdfs:label "year"@en .
+###  http://upm.es/ontology#stores
+ont:stores rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf owl:topObjectProperty ;
+           rdfs:label "ont:stores" .
 
 
 #################################################################
@@ -279,92 +118,184 @@ ont:year rdf:type owl:DatatypeProperty ;
 
 ###  http://upm.es/ontology#DataCatalog
 ont:DataCatalog rdf:type owl:Class ;
-             rdfs:comment "Class for catalogs containing various datasets." ;
-             rdfs:label "DataCatalog"@en .
+                rdfs:comment "Class for catalogs containing various datasets." ;
+                rdfs:label "DataCatalog"@en .
+
+
+###  http://upm.es/ontology#Database
+ont:Database rdf:type owl:Class ;
+             rdfs:subClassOf [ rdf:type owl:Restriction ;
+                               owl:onProperty ont:stores ;
+                               owl:someValuesFrom ont:Dataset
+                             ] ;
+             rdfs:label "ont:Database" .
 
 
 ###  http://upm.es/ontology#Dataset
 ont:Dataset rdf:type owl:Class ;
-         rdfs:comment "Class representing a dataset in the catalog." ;
-         rdfs:label "Dataset"@en .
+            rdfs:subClassOf [ rdf:type owl:Restriction ;
+                              owl:onProperty ont:belongsTo ;
+                              owl:someValuesFrom ont:DataCatalog
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty ont:has ;
+                              owl:someValuesFrom ont:Topic
+                            ] ;
+            rdfs:comment "Class representing a dataset in the catalog." ;
+            rdfs:label "Dataset"@en .
 
 
 ###  http://upm.es/ontology#Driver
 ont:Driver rdf:type owl:Class ;
-        rdfs:comment "Class representing a driver in a race." ;
-        rdfs:label "Driver"@en .
+           rdfs:subClassOf ont:Topic ;
+           rdfs:label "ont:Driver" .
 
 
-###  http://upm.es/ontology#Lap
-ont:Lap rdf:type owl:Class ;
-     rdfs:comment "Class representing a lap within a race." ;
-     rdfs:label "Lap"@en .
+###  http://upm.es/ontology#DriverDescription
+ont:DriverDescription rdf:type owl:Class ;
+                      rdfs:subClassOf ont:Topic ;
+                      rdfs:label "ont:DriverDescription" .
 
 
-###  http://upm.es/ontology#Race
-ont:Race rdf:type owl:Class ;
-      rdfs:comment "Class representing a race event." ;
-      rdfs:label "Race"@en .
+###  http://upm.es/ontology#ElasticSearch
+ont:ElasticSearch rdf:type owl:Class ;
+                  rdfs:subClassOf ont:UnstructuredDatabase ;
+                  rdfs:label "ont:ElasticSearch" .
+
+
+###  http://upm.es/ontology#Laps
+ont:Laps rdf:type owl:Class ;
+         rdfs:subClassOf ont:Topic ;
+         rdfs:label "ont:Laps" .
+
+
+###  http://upm.es/ontology#MariaDb
+ont:MariaDb rdf:type owl:Class ;
+            rdfs:subClassOf ont:StructuredDatabase ;
+            rdfs:label "ont:MariaDb" .
+
+
+###  http://upm.es/ontology#PostgreSQL
+ont:PostgreSQL rdf:type owl:Class ;
+               rdfs:subClassOf ont:StructuredDatabase ;
+               rdfs:label "ont:PostgreSQL" .
+
+
+###  http://upm.es/ontology#Races
+ont:Races rdf:type owl:Class ;
+          rdfs:subClassOf ont:Topic ;
+          rdfs:label "ont:Races" .
+
+
+###  http://upm.es/ontology#StructuredDatabase
+ont:StructuredDatabase rdf:type owl:Class ;
+                       rdfs:subClassOf ont:Database ;
+                       rdfs:label "ont:StructuredDatabase" .
+
+
+###  http://upm.es/ontology#Topic
+ont:Topic rdf:type owl:Class ;
+          rdfs:subClassOf owl:Thing .
+
+
+###  http://upm.es/ontology#UnstructuredDatabase
+ont:UnstructuredDatabase rdf:type owl:Class ;
+                         rdfs:subClassOf ont:Database ;
+                         rdfs:label "ont:UnstructuredDatabase" .
 
 
 #################################################################
 #    Individuals
 #################################################################
 
-###  http://upm.es/ontology#DriverData
-ont:DriverData rdf:type owl:NamedIndividual ,
-                     ont:Dataset ;
-            ont:isPartOf ont:RacingDataCatalog ;
-            ont:datasetDescription "Dataset with information about race drivers." ;
-            ont:datasetTitle "Driver Data" ;
-            ont:issueDate "2024-10-26"^^xsd:date ;
-            rdfs:label "Driver Data"@en .
+###  http://upm.es/ontology#DriverTopic
+ont:DriverTopic rdf:type owl:NamedIndividual ,
+                         ont:Topic ;
+                rdfs:label "ont:F1DriversTopic"^^xsd:string .
 
 
-###  http://upm.es/ontology#DriversDataCatalog
-ont:DriversDataCatalog rdf:type owl:NamedIndividual ,
-                             ont:DataCatalog ;
-                    ont:datasetDescription "Catalog of driver-related datasets." ;
-                    ont:datasetTitle "Drivers Data Catalog" ;
-                    rdfs:label "Drivers Data Catalog"@en .
+###  http://upm.es/ontology#DriversDataset
+ont:DriversDataset rdf:type owl:NamedIndividual ,
+                            ont:Dataset ;
+                   ont:belongsTo ont:Formula1DataCatalog ;
+                   ont:has ont:DriverTopic ;
+                   rdfs:label "ont:F1DriversDataset"^^xsd:string .
 
 
-###  http://upm.es/ontology#DriversDescriptions
-ont:DriversDescriptions rdf:type owl:NamedIndividual ,
-                              ont:Dataset ;
-                     ont:isPartOf ont:DriversDataCatalog ;
-                     ont:datasetDescription "Dataset containing drivers descriptions." ;
-                     ont:datasetTitle "DriversDescriptions" ;
-                     ont:issueDate "2024-10-20"^^xsd:date ;
-                     rdfs:label "Drivers Descriptions"@en .
+###  http://upm.es/ontology#ElasticDatabase
+ont:ElasticDatabase rdf:type owl:NamedIndividual ;
+                    ont:dbname "drivers_desciptions"^^xsd:string ;
+                    ont:host "elasticsearch"^^xsd:string ;
+                    ont:port 9200 ;
+                    rdfs:label "ont:ElasticDatabase" .
 
 
-###  http://upm.es/ontology#LapData
-ont:LapData rdf:type owl:NamedIndividual ,
-                  ont:Dataset ;
-         ont:isPartOf ont:RacingDataCatalog ;
-         ont:datasetDescription "Dataset containing lap times and positions of drivers." ;
-         ont:datasetTitle "Lap Data" ;
-         ont:issueDate "2024-10-20"^^xsd:date ;
-         rdfs:label "Lap Data"@en .
+###  http://upm.es/ontology#F1DriverDescriptionTopic
+ont:F1DriverDescriptionTopic rdf:type owl:NamedIndividual ,
+                                      ont:Topic ;
+                             rdfs:label "ont:F1DriverDescriptionTopic" .
 
 
-###  http://upm.es/ontology#RaceData
-ont:RaceData rdf:type owl:NamedIndividual ,
-                   ont:Dataset ;
-          ont:isPartOf ont:RacingDataCatalog ;
-          ont:datasetDescription "Dataset containing race event information." ;
-          ont:datasetTitle "Race Data" ;
-          ont:issueDate "2024-10-20"^^xsd:date ;
-          rdfs:label "Race Data"@en .
+###  http://upm.es/ontology#F1DriversDescriptionDataset
+ont:F1DriversDescriptionDataset rdf:type owl:NamedIndividual ,
+                                         ont:Dataset ;
+                                ont:belongsTo ont:Formula1DataCatalog ;
+                                ont:has ont:F1DriverDescriptionTopic ;
+                                rdfs:label "ont:F1DriversDescriptionDataset" .
 
 
-###  http://upm.es/ontology#RacingDataCatalog
-ont:RacingDataCatalog rdf:type owl:NamedIndividual ,
-                            ont:DataCatalog ;
-                   ont:datasetDescription "Catalog of racing-related datasets including laps, drivers, and races." ;
-                   ont:datasetTitle "Racing Data Catalog" ;
-                   rdfs:label "Racing Data Catalog"@en .
+###  http://upm.es/ontology#F1LapsTopic
+ont:F1LapsTopic rdf:type owl:NamedIndividual ,
+                         ont:Topic ;
+                rdfs:label "ont:F1LapsTopic" .
+
+
+###  http://upm.es/ontology#F1RacesDataset
+ont:F1RacesDataset rdf:type owl:NamedIndividual ,
+                            ont:Dataset ;
+                   ont:belongsTo ont:Formula1DataCatalog ;
+                   ont:has ont:F1RacesTopic ;
+                   rdfs:label "ont:F1RacesDataset" .
+
+
+###  http://upm.es/ontology#F1RacesTopic
+ont:F1RacesTopic rdf:type owl:NamedIndividual ;
+                 rdfs:label "ont:F1RacesTopic" .
+
+
+###  http://upm.es/ontology#Formula1DataCatalog
+ont:Formula1DataCatalog rdf:type owl:NamedIndividual ,
+                                 ont:DataCatalog ;
+                        rdfs:label "ont:Formula1DataCatalog" .
+
+
+###  http://upm.es/ontology#LapsDataset
+ont:LapsDataset rdf:type owl:NamedIndividual ,
+                         ont:Topic ;
+                ont:belongsTo ont:Formula1DataCatalog ;
+                ont:has ont:F1LapsTopic ;
+                rdfs:label "ont:F1LapsDataset"^^xsd:string .
+
+
+###  http://upm.es/ontology#MariaDbDatabase
+ont:MariaDbDatabase rdf:type owl:NamedIndividual ;
+                    ont:dbname "my_mariadb_db"^^xsd:string ;
+                    ont:host "hive4-mariadb"^^xsd:string ;
+                    ont:password "my_password"^^xsd:string ;
+                    ont:port 3306 ;
+                    ont:user "my_user"^^xsd:string ;
+                    rdfs:label "ont:MariaDbDatabase" .
+
+
+###  http://upm.es/ontology#PostgresDatabase
+ont:PostgresDatabase rdf:type owl:NamedIndividual ,
+                              ont:PostgreSQL ;
+                     ont:dbname "metastore_db"^^xsd:string ;
+                     ont:host "hive4-postgres"^^xsd:string ;
+                     ont:password "password"^^xsd:string ;
+                     ont:port 5432 ;
+                     ont:user "hive"^^xsd:string ;
+                     rdfs:label "ont:PostgresDatabase" .
 
 
 ###  Generated by the OWL API (version 4.5.13) https://github.com/owlcs/owlapi
