@@ -78,12 +78,13 @@ xsd:time rdf:type rdfs:Datatype .
 
 ###  http://upm.es/ontology#belongsTo
 ont:belongsTo rdf:type owl:ObjectProperty ;
+              rdfs:domain ont:Dataset ;
+              rdfs:range ont:DataCatalog ;
               rdfs:label "ont:belongsTo" .
 
 
 ###  http://upm.es/ontology#has
-ont:has rdf:type owl:ObjectProperty ;
-        rdfs:label "ont:has" .
+ont:has rdf:type owl:ObjectProperty .
 
 
 ###  http://upm.es/ontology#hasDriver
@@ -98,6 +99,13 @@ ont:hasRace rdf:type owl:ObjectProperty ;
             rdfs:label "hasRace"@en .
 
 
+###  http://upm.es/ontology#hasTopico
+ont:hasTopico rdf:type owl:ObjectProperty ;
+              rdfs:domain ont:Dataset ;
+              rdfs:range ont:Topic ;
+              rdfs:label "ont:hasTopico" .
+
+
 ###  http://upm.es/ontology#isPartOf
 ont:isPartOf rdf:type owl:ObjectProperty ;
              rdfs:domain ont:Dataset ;
@@ -109,6 +117,8 @@ ont:isPartOf rdf:type owl:ObjectProperty ;
 ###  http://upm.es/ontology#stores
 ont:stores rdf:type owl:ObjectProperty ;
            rdfs:subPropertyOf owl:topObjectProperty ;
+           rdfs:domain ont:Database ;
+           rdfs:range ont:Dataset ;
            rdfs:label "ont:stores" .
 
 
@@ -136,10 +146,6 @@ ont:Dataset rdf:type owl:Class ;
             rdfs:subClassOf [ rdf:type owl:Restriction ;
                               owl:onProperty ont:belongsTo ;
                               owl:someValuesFrom ont:DataCatalog
-                            ] ,
-                            [ rdf:type owl:Restriction ;
-                              owl:onProperty ont:has ;
-                              owl:someValuesFrom ont:Topic
                             ] ;
             rdfs:comment "Class representing a dataset in the catalog." ;
             rdfs:label "Dataset"@en .
@@ -218,7 +224,6 @@ ont:DriverTopic rdf:type owl:NamedIndividual ,
 ont:DriversDataset rdf:type owl:NamedIndividual ,
                             ont:Dataset ;
                    ont:belongsTo ont:Formula1DataCatalog ;
-                   ont:has ont:DriverTopic ;
                    rdfs:label "ont:F1DriversDataset"^^xsd:string .
 
 
@@ -240,7 +245,6 @@ ont:F1DriverDescriptionTopic rdf:type owl:NamedIndividual ,
 ont:F1DriversDescriptionDataset rdf:type owl:NamedIndividual ,
                                          ont:Dataset ;
                                 ont:belongsTo ont:Formula1DataCatalog ;
-                                ont:has ont:F1DriverDescriptionTopic ;
                                 rdfs:label "ont:F1DriversDescriptionDataset" .
 
 
@@ -254,7 +258,6 @@ ont:F1LapsTopic rdf:type owl:NamedIndividual ,
 ont:F1RacesDataset rdf:type owl:NamedIndividual ,
                             ont:Dataset ;
                    ont:belongsTo ont:Formula1DataCatalog ;
-                   ont:has ont:F1RacesTopic ;
                    rdfs:label "ont:F1RacesDataset" .
 
 
@@ -273,7 +276,6 @@ ont:Formula1DataCatalog rdf:type owl:NamedIndividual ,
 ont:LapsDataset rdf:type owl:NamedIndividual ,
                          ont:Topic ;
                 ont:belongsTo ont:Formula1DataCatalog ;
-                ont:has ont:F1LapsTopic ;
                 rdfs:label "ont:F1LapsDataset"^^xsd:string .
 
 
