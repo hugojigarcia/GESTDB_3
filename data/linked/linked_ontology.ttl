@@ -83,35 +83,11 @@ ont:belongsTo rdf:type owl:ObjectProperty ;
               rdfs:label "ont:belongsTo" .
 
 
-###  http://upm.es/ontology#has
-ont:has rdf:type owl:ObjectProperty .
-
-
-###  http://upm.es/ontology#hasDriver
-ont:hasDriver rdf:type owl:ObjectProperty ;
-              rdfs:comment "Associates a lap with a driver." ;
-              rdfs:label "hasDriver"@en .
-
-
-###  http://upm.es/ontology#hasRace
-ont:hasRace rdf:type owl:ObjectProperty ;
-            rdfs:comment "Associates a lap with a race." ;
-            rdfs:label "hasRace"@en .
-
-
 ###  http://upm.es/ontology#hasTopico
 ont:hasTopico rdf:type owl:ObjectProperty ;
               rdfs:domain ont:Dataset ;
               rdfs:range ont:Topic ;
               rdfs:label "ont:hasTopico" .
-
-
-###  http://upm.es/ontology#isPartOf
-ont:isPartOf rdf:type owl:ObjectProperty ;
-             rdfs:domain ont:Dataset ;
-             rdfs:range ont:DataCatalog ;
-             rdfs:comment "Associates a dataset with a data catalog." ;
-             rdfs:label "isPartOf"@en .
 
 
 ###  http://upm.es/ontology#stores
