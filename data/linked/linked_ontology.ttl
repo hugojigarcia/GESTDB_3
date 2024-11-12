@@ -53,17 +53,7 @@ ont:user rdf:type owl:AnnotationProperty ;
 
 ###  http://upm.es/ontology#userm
 ont:userm rdf:type owl:AnnotationProperty ;
-          rdfs:label "ont:userm" .
-
-
-###  http://webprotege.stanford.edu/R7yBkzSnAtMMJaFEo5FjOcu
-ont:database rdf:type owl:AnnotationProperty ;
-             rdfs:label "ont:database" .
-
-
-###  http://webprotege.stanford.edu/RJxtj0WV8L59qQWoR5K28L
-ont:username rdf:type owl:AnnotationProperty ;
-            rdfs:label "ont:username" .
+          rdfs:label "ont:userm" . 
 
 
 #################################################################
@@ -207,21 +197,18 @@ ont:UnstructuredDatabase rdf:type owl:Class ;
 #################################################################
 
 ###  http://upm.es/ontology#DriverTopic
-ont:DriverTopic rdf:type owl:NamedIndividual ,
-                         ont:Driver ;
+ont:DriverTopic rdf:type ont:Driver ;
                 rdfs:label "ont:F1DriversTopic"^^xsd:string .
 
 
 ###  http://upm.es/ontology#DriversDataset
-ont:DriversDataset rdf:type owl:NamedIndividual ,
-                            ont:Dataset ;
+ont:DriversDataset rdf:type ont:Dataset ;
                    ont:belongsTo ont:Formula1DataCatalog ;
                    rdfs:label "ont:F1DriversDataset"^^xsd:string .
 
 
 ###  http://upm.es/ontology#ElasticDatabase
-ont:ElasticDatabase rdf:type owl:NamedIndividual ,
-                             ont:ElasticSearch ;
+ont:ElasticDatabase rdf:type ont:ElasticSearch ;
                     ont:dbname "drivers_desciptions"^^xsd:string ;
                     ont:host "elasticsearch"^^xsd:string ;
                     ont:port 9200 ;
@@ -229,53 +216,45 @@ ont:ElasticDatabase rdf:type owl:NamedIndividual ,
 
 
 ###  http://upm.es/ontology#F1DriverDescriptionTopic
-ont:F1DriverDescriptionTopic rdf:type owl:NamedIndividual ,
-                                      ont:DriverDescription ;
+ont:F1DriverDescriptionTopic rdf:type ont:DriverDescription ;
                              rdfs:label "ont:F1DriverDescriptionTopic" .
 
 
 ###  http://upm.es/ontology#F1DriversDescriptionDataset
-ont:F1DriversDescriptionDataset rdf:type owl:NamedIndividual ,
-                                         ont:Dataset ;
+ont:F1DriversDescriptionDataset rdf:type ont:Dataset ;
                                 ont:belongsTo ont:Formula1DataCatalog ;
                                 rdfs:label "ont:F1DriversDescriptionDataset" .
 
 
 ###  http://upm.es/ontology#F1LapsTopic
-ont:F1LapsTopic rdf:type owl:NamedIndividual ,
-                         ont:Laps ;
+ont:F1LapsTopic rdf:type ont:Laps ;
                 rdfs:label "ont:F1LapsTopic" .
 
 
 ###  http://upm.es/ontology#F1RacesDataset
-ont:F1RacesDataset rdf:type owl:NamedIndividual ,
-                            ont:Dataset ;
+ont:F1RacesDataset rdf:type ont:Dataset ;
                    ont:belongsTo ont:Formula1DataCatalog ;
                    rdfs:label "ont:F1RacesDataset" .
 
 
 ###  http://upm.es/ontology#F1RacesTopic
-ont:F1RacesTopic rdf:type owl:NamedIndividual ,
-                          ont:Races ;
+ont:F1RacesTopic rdf:type ont:Races ;
                  rdfs:label "ont:F1RacesTopic" .
 
 
 ###  http://upm.es/ontology#Formula1DataCatalog
-ont:Formula1DataCatalog rdf:type owl:NamedIndividual ,
-                                 ont:DataCatalog ;
+ont:Formula1DataCatalog rdf:type ont:DataCatalog ;
                         rdfs:label "ont:Formula1DataCatalog" .
 
 
 ###  http://upm.es/ontology#LapsDataset
-ont:LapsDataset rdf:type owl:NamedIndividual ,
-                         ont:Dataset ;
+ont:LapsDataset rdf:type ont:Dataset ;
                 ont:belongsTo ont:Formula1DataCatalog ;
                 rdfs:label "ont:F1LapsDataset"^^xsd:string .
 
 
 ###  http://upm.es/ontology#MariaDbDatabase
-ont:MariaDbDatabase rdf:type owl:NamedIndividual ,
-                             ont:MariaDb ;
+ont:MariaDbDatabase rdf:type ont:MariaDb ;
                     ont:dbname "my_mariadb_db"^^xsd:string ;
                     ont:host "hive4-mariadb"^^xsd:string ;
                     ont:password "my_password"^^xsd:string ;
@@ -285,8 +264,7 @@ ont:MariaDbDatabase rdf:type owl:NamedIndividual ,
 
 
 ###  http://upm.es/ontology#PostgresDatabase
-ont:PostgresDatabase rdf:type owl:NamedIndividual ,
-                              ont:PostgreSQL ;
+ont:PostgresDatabase rdf:type ont:PostgreSQL ;
                      ont:dbname "metastore_db"^^xsd:string ;
                      ont:host "hive4-postgres"^^xsd:string ;
                      ont:password "password"^^xsd:string ;
@@ -295,13 +273,12 @@ ont:PostgresDatabase rdf:type owl:NamedIndividual ,
                      rdfs:label "ont:PostgresDatabase" .
 
 
-###  http://webprotege.stanford.edu/RbZp4O2ys2rb84Ypu0IujU
-ont:HiveDatabase rdf:type owl:NamedIndividual ,
-                           ont:HiveDB ;
+###  http://upm.es/ontology#HiveDatabase
+ont:HiveDatabase rdf:type ont:HiveDB ;
                   ont:host "hiveserver2"^^xsd:string ;
                   ont:port 10000 ;
-                  ont:database "default"^^xsd:string ;
-                  ont:username "hugo"^^xsd:string ;
+                  ont:dbname "default"^^xsd:string ;
+                  ont:user "hugo"^^xsd:string ;
                   rdfs:label "ont:HiveDbDatabase" .
 
 
