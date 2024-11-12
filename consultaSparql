@@ -1,0 +1,19 @@
+PREFIX ont: <http://upm.es/ontology#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+SELECT distinct ?database ?dbname ?host ?port ?user ?password
+WHERE {
+    # Selecciona cualquier base de datos (ont:Database o sus subtipos)
+    ?database rdf:type ont:Database .
+    
+
+    # Propiedades de conexión
+    OPTIONAL { ?database ont:dbname ?dbname . }
+    OPTIONAL { ?database ont:host ?host . }
+    OPTIONAL { ?database ont:port ?port . }
+    OPTIONAL { ?database ont:user ?user . }
+    OPTIONAL { ?database ont:password ?password . }
+}
+ORDER BY ?database
