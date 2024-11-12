@@ -57,13 +57,13 @@ ont:userm rdf:type owl:AnnotationProperty ;
 
 
 ###  http://webprotege.stanford.edu/R7yBkzSnAtMMJaFEo5FjOcu
-<http://webprotege.stanford.edu/R7yBkzSnAtMMJaFEo5FjOcu> rdf:type owl:AnnotationProperty ;
-                                                         rdfs:label "ont:database" .
+ont:database rdf:type owl:AnnotationProperty ;
+             rdfs:label "ont:database" .
 
 
 ###  http://webprotege.stanford.edu/RJxtj0WV8L59qQWoR5K28L
-<http://webprotege.stanford.edu/RJxtj0WV8L59qQWoR5K28L> rdf:type owl:AnnotationProperty ;
-                                                        rdfs:label "ont:username" .
+ont:username rdf:type owl:AnnotationProperty ;
+            rdfs:label "ont:username" .
 
 
 #################################################################
@@ -300,8 +300,8 @@ ont:HiveDatabase rdf:type owl:NamedIndividual ,
                            ont:HiveDB ;
                   ont:host "hiveserver2"^^xsd:string ;
                   ont:port 10000 ;
-                  <http://webprotege.stanford.edu/R7yBkzSnAtMMJaFEo5FjOcu> "default"^^xsd:string ;
-                  <http://webprotege.stanford.edu/RJxtj0WV8L59qQWoR5K28L> "hugo"^^xsd:string ;
+                  ont:database "default"^^xsd:string ;
+                  ont:username "hugo"^^xsd:string ;
                   rdfs:label "ont:HiveDbDatabase" .
 
 
