@@ -209,7 +209,7 @@ ont:DriversDataset rdf:type ont:Dataset ;
 
 ###  http://upm.es/ontology#ElasticDatabase
 ont:ElasticDatabase rdf:type ont:ElasticSearch ;
-                    ont:dbname "drivers_desciptions"^^xsd:string ;
+                    ont:dbname "drivers_descriptions"^^xsd:string ;
                     ont:host "elasticsearch"^^xsd:string ;
                     ont:port 9200 ;
                     rdfs:label "ont:ElasticDatabase" .
